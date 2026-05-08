@@ -27,6 +27,7 @@ def main():
             order = controller.create_order(data["customer_name"], data["items"])
             view.show_message(f"주문 생성 완료 (ID: {order.id})")
             view.show_order_detail(order)
+            input("\nEnter 를 누르세요.")
 
         elif choice == "2":
             orders = controller.get_all_orders()
