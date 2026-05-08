@@ -43,3 +43,9 @@ class OrderController:
             self._orders.remove(order)
             return True
         return False
+
+    def get_order_count(self) -> int:
+        return len(self._orders)
+
+    def get_total_price(self) -> float:
+        return sum(o.total_price for o in self._orders)
