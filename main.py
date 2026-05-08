@@ -2,7 +2,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(__file__))
-if sys.stdout.encoding != "utf-8":
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 
 from controller.order_controller import OrderController
