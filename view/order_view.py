@@ -20,7 +20,9 @@ class OrderView:
         if not orders:
             print("\n주문 내역이 없습니다.")
             return
-        print(f"\n{'ID':<10} {'고객명':<15} {'상태':<12} {'총액':>10} {'생성일'}")
+        total_price = sum(o.total_price for o in orders)
+        print(f"\n총 {len(orders)}건  |  합계: {total_price:,.0f}원")
+        print(f"{'ID':<10} {'고객명':<15} {'상태':<12} {'총액':>10} {'생성일'}")
         print("-" * 65)
         for o in orders:
             print(f"{o.id:<10} {o.customer_name:<15} {o.status.value:<12} {o.total_price:>10,.0f}원  {o.created_at[:19]}")
