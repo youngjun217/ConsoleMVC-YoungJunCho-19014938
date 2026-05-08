@@ -31,11 +31,13 @@ def main():
         elif choice == "2":
             orders = controller.get_all_orders()
             view.show_orders(orders)
+            input("\nEnter 를 누르세요.")
 
         elif choice == "3":
             order_id = view.prompt_order_id()
             order = controller.get_order_by_id(order_id)
             view.show_order_detail(order)
+            input("\nEnter 를 누르세요.")
 
         elif choice == "4":
             order_id = view.prompt_order_id()
