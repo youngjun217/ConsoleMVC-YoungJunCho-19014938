@@ -1,3 +1,4 @@
+import os
 from typing import List, Optional
 
 from model.order import Order, OrderStatus
@@ -5,6 +6,7 @@ from model.order import Order, OrderStatus
 
 class OrderView:
     def show_menu(self) -> str:
+        os.system("cls" if os.name == "nt" else "clear")
         print("\n=== 주문 관리 시스템 ===")
         print("1. 주문 생성")
         print("2. 전체 주문 목록")
