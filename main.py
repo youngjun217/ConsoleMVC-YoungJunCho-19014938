@@ -18,6 +18,9 @@ def main():
 
         if choice == "1":
             data = view.prompt_order_input()
+            if not data["customer_name"]:
+                view.show_message("고객 이름을 입력해야 합니다.")
+                continue
             if not data["items"]:
                 view.show_message("상품을 하나 이상 입력해야 합니다.")
                 continue

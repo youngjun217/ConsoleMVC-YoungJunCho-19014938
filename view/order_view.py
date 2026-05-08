@@ -39,6 +39,8 @@ class OrderView:
 
     def prompt_order_input(self) -> dict:
         customer_name = input("고객 이름: ").strip()
+        if not customer_name:
+            return {"customer_name": "", "items": []}
         items = []
         print("상품 입력 (빈 줄 입력 시 종료)")
         while True:
