@@ -41,6 +41,8 @@ def main():
                 view.show_message("주문을 찾을 수 없습니다.")
                 continue
             status = view.prompt_status()
+            if status is None:
+                continue
             controller.update_status(order_id, status)
             view.show_message(f"상태 변경 완료: {status.value}")
 

@@ -45,21 +45,33 @@ class OrderView:
             product_name = input("  상품명: ").strip()
             if not product_name:
                 break
-            quantity = int(input("  수량: "))
-            unit_price = float(input("  단가(원): "))
+            try:
+                quantity = int(input("  수량: "))
+            except ValueError:
+                print("  수량은 숫자여야 합니다. 1로 설정합니다.")
+                quantity = 1
+            try:
+                unit_price = float(input("  단가(원): "))
+            except ValueError:
+                print("  단가는 숫자여야 합니다. 0으로 설정합니다.")
+                unit_price = 0.0
             items.append({"product_name": product_name, "quantity": quantity, "unit_price": unit_price})
         return {"customer_name": customer_name, "items": items}
 
     def prompt_order_id(self) -> str:
         return input("주문 ID: ").strip()
 
-    def prompt_status(self) -> OrderStatus:
+    def prompt_status(self) -> Optional[OrderStatus]:
         print("상태 선택:")
         statuses = list(OrderStatus)
         for i, s in enumerate(statuses, 1):
             print(f"  {i}. {s.value}")
-        choice = int(input("선택 > ")) - 1
-        return statuses[choice]
+        try:
+            choice = int(input("선택 > ")) - 1
+            return statuses[choice]
+        except (ValueError, IndexError):
+            print("잘못된 입력입니다.")
+            return None
 
     def show_message(self, message: str) -> None:
         print(f"\n{message}")
