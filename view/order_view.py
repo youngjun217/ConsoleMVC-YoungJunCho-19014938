@@ -31,7 +31,8 @@ class OrderView:
         if not order:
             print("\n주문을 찾을 수 없습니다.")
             return
-        print(f"\n[주문 #{order.id}]")
+        print("\n" + "─" * 55)
+        print(f"[주문 #{order.id}]")
         print(f"  고객명 : {order.customer_name}")
         print(f"  상태   : {order.status.value}")
         print(f"  생성일 : {order.created_at[:19]}")
@@ -40,6 +41,7 @@ class OrderView:
         for item in order.items:
             print(f"  {item.product_name:<20} {item.quantity:>5} {item.unit_price:>10,.0f} {item.subtotal:>10,.0f}")
         print(f"  {'합계':>{47}} {order.total_price:>10,.0f}원")
+        print("─" * 55)
 
     def prompt_order_input(self) -> dict:
         customer_name = input("고객 이름: ").strip()
