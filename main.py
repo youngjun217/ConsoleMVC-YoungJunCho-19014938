@@ -14,7 +14,7 @@ def main():
     view = OrderView()
 
     while True:
-        choice = view.show_menu()
+        choice = view.show_menu(len(controller.get_all_orders()))
 
         if choice == "1":
             data = view.prompt_order_input()

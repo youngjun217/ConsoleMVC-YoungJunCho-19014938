@@ -5,9 +5,9 @@ from model.order import Order, OrderStatus
 
 
 class OrderView:
-    def show_menu(self) -> str:
+    def show_menu(self, order_count: int = 0) -> str:
         os.system("cls" if os.name == "nt" else "clear")
-        print("\n=== 주문 관리 시스템 ===")
+        print(f"\n=== 주문 관리 시스템  [총 {order_count}건] ===")
         print("1. 주문 생성")
         print("2. 전체 주문 목록")
         print("3. 주문 상세 조회")
